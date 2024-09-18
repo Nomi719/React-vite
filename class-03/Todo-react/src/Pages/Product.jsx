@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Heading from "../components/Heading";
 import { Link } from "react-router-dom";
+import {Productcard} from "../components/Productcard"
 
 function Products() {
   const [products, setProducts] = useState([]);
@@ -25,12 +26,19 @@ function Products() {
         onChange={(e) => setSearch(e.target.value)}
         className="p-2 border rounded w-full mx-auto my-2"
       />
+      <div className="flex flex-wrap -m-4">
+
       {filtered.map((data) => (
-        <Link to={`/products/${data.title.split(" ").join("-")}/id/${data.id}`}>
-          <Heading id={data.id} title={data.title} key={data.id} />
-        </Link>
+
+//  <Link to={`/products/${data.title.split(" ").join("-")}/id/${data.id}`}>
+//          <Heading id={data.id} title={data.title} key={data.id} />
+//       </Link>
+      <Productcard info={data} key={data.id}/>
+      
       ))}
+      </div>
     </div>
+    
   );
 }
 
